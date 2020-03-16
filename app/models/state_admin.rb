@@ -1,4 +1,4 @@
-class State < ApplicationRecord
+class StateAdmin < ApplicationRecord
   belongs_to :user
   belongs_to :state
 end

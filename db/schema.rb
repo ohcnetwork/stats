@@ -67,11 +67,11 @@ ActiveRecord::Schema.define(version: 2020_03_14_165601) do
     t.string "title"
   end
 
-  create_table "state_admin", force: :cascade do |t|
+  create_table "state_admins", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "state_id"
-    t.index ["state_id"], name: "index_state_admin_on_state_id"
-    t.index ["user_id"], name: "index_state_admin_on_user_id"
+    t.index ["state_id"], name: "index_state_admins_on_state_id"
+    t.index ["user_id"], name: "index_state_admins_on_user_id"
   end
 
   create_table "states", force: :cascade do |t|
@@ -87,9 +87,8 @@ ActiveRecord::Schema.define(version: 2020_03_14_165601) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "age"
-    t.integer "mobile_number"
-    t.string "username"
-    t.string "sex"
+    t.bigint "mobile_number"
+    t.string "gender"
     t.bigint "district_id"
     t.index ["district_id"], name: "index_users_on_district_id"
     t.index ["email"], name: "index_users_on_email", unique: true

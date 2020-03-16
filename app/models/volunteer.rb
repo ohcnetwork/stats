@@ -1,5 +1,5 @@
 class Volunteer < ApplicationRecord
   belongs_to :user
-  has_many :roles
-  has_many :skills
+  belongs_to :role
+  belongs_to :skill
 end

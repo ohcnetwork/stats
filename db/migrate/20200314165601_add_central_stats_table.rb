@@ -28,7 +28,7 @@ class AddCentralStatsTable < ActiveRecord::Migration[6.0]
       t.string :title
     end
 
-    create_table :state_admin do |t|
+    create_table :state_admins do |t|
       t.references :user
       t.references :state
     end
@@ -41,9 +41,8 @@ class AddCentralStatsTable < ActiveRecord::Migration[6.0]
     end
 
     add_column :users, :age, :integer
-    add_column :users, :mobile_number, :integer
-    add_column :users, :username, :string
-    add_column :users, :sex, :string
+    add_column :users, :mobile_number, :bigint
+    add_column :users, :gender, :string
     add_reference :users, :district
   end
 end

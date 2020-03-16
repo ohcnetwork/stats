@@ -1,0 +1,63 @@
+<% district_options = District.all.map { |a| [a.name, a.id] }
+   gender_options = %w(Male Female Other)
+   role_options = Role.all.map { |a| [a.title, a.id] }
+   skill_options = Skill.all.map { |a| [a.title, a.id] }
+%>
+
+<div class="max-w-5xl mx-auto">
+  <div class="max-w-fc mx-auto mt-10 p-4">
+    <h2>Volunteer Registration</h2>
+    <%= form_with model: Volunteer.new, class: "form" do |f| %>
+      <div class="mt-4">
+        <%= f.label :email, class: 'tracking-wide text-sm font-semibold mr-6' %><br/>
+        <%= f.email_field :email, required: true, autofocus: true, autocomplete: "email", class: 'appearance-none block w-full bg-white border border-gray-400 rounded py-3 px-4 mt-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500' %>
+      </div>
+      <div class="mt-4">
+        <%= f.label :password, class: 'tracking-wide text-sm font-semibold mr-6' %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br/>
+        <%= f.password_field :password, required: true, autocomplete: "new-password", class: 'appearance-none block w-full bg-white border border-gray-400 rounded py-3 px-4 mt-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500' %>
+      </div>
+
+      <div class="mt-4">
+        <%= f.label :password_confirmation, class: 'tracking-wide text-sm font-semibold mr-6' %><br/>
+        <%= f.password_field :password_confirmation, required: true, autocomplete: "new-password", class: 'appearance-none block w-full bg-white border border-gray-400 rounded py-3 px-4 mt-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500' %>
+      </div>
+
+      <div class="mt-4">
+        <%= f.label :district, class: 'tracking-wide text-sm font-semibold mr-6' %><br/>
+        <%= f.select :district_id, district_options, {}, required: true, prompt: 'Select your district', class: "block bg-white border text-sm border-gray-400 hover:border-gray-500 px-4 py-3 pr-8 rounded-r-none leading-tight focus:outline-none" %>
+      </div>
+
+      <div class="mt-4">
+        <%= f.label :age, class: 'tracking-wide text-sm font-semibold mr-6' %><br/>
+        <%= f.number_field :age, required: true, class: 'appearance-none block w-full bg-white border border-gray-400 rounded py-3 px-4 mt-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500' %>
+      </div>
+
+      <div class="mt-4">
+        <%= f.label :mobile_number, class: 'tracking-wide text-sm font-semibold mr-6' %><br/>
+        <%= f.number_field :mobile_number, required: true, class: 'appearance-none block w-full bg-white border border-gray-400 rounded py-3 px-4 mt-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500' %>
+      </div>
+
+      <div class="mt-4">
+        <%= f.label :gender, class: 'tracking-wide text-sm font-semibold mr-6' %><br/>
+        <%= f.select :gender, gender_options, {}, required: true, prompt: 'Select your Gender', class: "block bg-white border text-sm border-gray-400 hover:border-gray-500 px-4 py-3 pr-8 rounded-r-none leading-tight focus:outline-none" %>
+      </div>
+
+      <div class="mt-4">
+        <%= f.label :role, class: 'tracking-wide text-sm font-semibold mr-6' %><br/>
+        <%= f.select :role_id, role_options, {}, required: true, prompt: 'Select your Gender', class: "block bg-white border text-sm border-gray-400 hover:border-gray-500 px-4 py-3 pr-8 rounded-r-none leading-tight focus:outline-none" %>
+      </div>
+
+      <div class="mt-4">
+        <%= f.label :skill, class: 'tracking-wide text-sm font-semibold mr-6' %><br/>
+        <%= f.select :skill_id, skill_options, {}, required: true, prompt: 'Select your Gender', class: "block bg-white border text-sm border-gray-400 hover:border-gray-500 px-4 py-3 pr-8 rounded-r-none leading-tight focus:outline-none" %>
+      </div>
+      <div class="mt-4">
+        <%= f.submit "Sign up", class: "mt-4 btn btn-primary w-full text-white font-bold py-3 px-6 shadow rounded focus:outline-none" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
