@@ -4,21 +4,25 @@
   </div>
 </div>
 <% if current_user.present? %>
+  <% districts = District.includes(:reports).all %>
   <div class="max-w-3xl mx-auto">
     <div class="mt-4">
 
       <table class="table-fixed">
+        <div>
+          Here is the current live situation of our state's Health care system
+        </div>
         <thead>
         <tr class="white border">
           <th class="border px-4 py-2">District</th>
-          <th class="border px-4 py-2">Under Observation</th>
-          <th class="border px-4 py-2">Under Home Isolation</th>
-          <th class="border px-4 py-2">Total Hospitalised</th>
-          <th class="border px-4 py-2">Hospitalised Today</th>
+          <th class="border px-4 py-2">Total people under observation</th>
+          <th class="border px-4 py-2">People under Home Isolation</th>
+          <th class="border px-4 py-2">people Hospitalised</th>
+          <th class="border px-4 py-2">Total people Hospitalised Today</th>
         </tr>
         </thead>
         <tbody>
-        <% District.includes(:reports).all.each do |district| %>
+        <% districts.each do |district| %>
           <% report = district.reports.last %>
           <tr>
             <td class="border px-4 py-2"><%= district.name %></td>
@@ -44,7 +48,7 @@
         </tr>
         </thead>
         <tbody>
-        <% District.includes(:reports).all.each do |district| %>
+        <% districts.each do |district| %>
           <% report = district.reports.last %>
           <% next if report.corona_positive.zero? %>
           <tr>
@@ -114,7 +118,7 @@
             map.coronasafe.in
           </div>
           <div class="text-md md:text-lg">
-            Realtime map-based updates on COVID-19 cases in India along with directions to test centers
+            Realtime map-based updates on COVID-19 cases in India along with directions to test centers.
           </div>
         </div>
       </a>
