@@ -5,6 +5,43 @@
 </div>
 <% if current_user.present? %>
   <div class="max-w-3xl mx-auto">
+    <% District.includes(:reports).all.each do |district| %>
+      <% report = district.reports.last %>
+      <table class="table-auto">
+        <thead>
+        column :under_observation
+        column :under_home_isolation
+        column :total_hospitalised
+        column :hospitalised_today
+        column :corona_positive
+        column :cured_discharged
+        column :deaths
+        column :district_name
+        <tr>
+          <th class="px-4 py-2">District</th>
+          <th class="px-4 py-2">Under Observation</th>
+          <th class="px-4 py-2">Under Home Isolation</th>
+          <th class="px-4 py-2">Hospitalised Today</th>
+          <th class="px-4 py-2">Corona Positive</th>
+          <th class="px-4 py-2">Cured / Discharged</th>
+          <th class="px-4 py-2">Deaths</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="bg-gray-100">
+          <td class="border px-4 py-2"><%= district.name %></td>
+          <td class="border px-4 py-2"><%= report.under_observation %></td>
+          <td class="border px-4 py-2"><%= report.under_home_isolation %></td>
+          <td class="border px-4 py-2"><%= report.total_hospitalised %></td>
+          <td class="border px-4 py-2"><%= report.hospitalised_today %></td>
+          <td class="border px-4 py-2"><%= report.corona_positive %></td>
+          <td class="border px-4 py-2"><%= report.cured_discharged %></td>
+          <td class="border px-4 py-2"><%= report.deaths %></td>
+        </tr>
+        </tbody>
+      </table>
+    <% end %>
+
     <div class="text-4xl font-semibold px-4 md:px-0">
       1. Corona Literacy Mission
     </div>

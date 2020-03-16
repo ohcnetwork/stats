@@ -17,7 +17,7 @@ class VolunteersController < ApplicationController
         flash[:success] = "Welcome to Corona Safe"
         redirect_to root_path
       else
-        flash[:error] = "That one-time link has expired, or is invalid. If you have already completed enrollment, please sign in."
+        flash[:error] = "The details you provided are incorrect, Please try again"
         redirect_back(fallback_location: root_path)
       end
     end
