@@ -6,8 +6,8 @@ ActiveAdmin.register Report do
     id_column
     column :under_observation
     column :under_home_isolation
-    column :hospitalised_today
     column :total_hospitalised
+    column :hospitalised_today
     column :corona_positive
     column :cured_discharged
     column :deaths
@@ -21,8 +21,8 @@ ActiveAdmin.register Report do
     f.inputs do
       f.input :under_observation
       f.input :under_home_isolation
-      f.input :hospitalised_today
       f.input :total_hospitalised
+      f.input :hospitalised_today
       f.input :corona_positive
       f.input :cured_discharged
       f.input :deaths
