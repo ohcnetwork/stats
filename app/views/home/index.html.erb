@@ -6,19 +6,20 @@
 <% if current_user.present? %>
   <div class="max-w-3xl mx-auto">
     <div class="mt-4">
-      <% District.includes(:reports).all.each do |district| %>
-        <% report = district.reports.last %>
-        <table class="table-fixed">
-          <thead>
-          <tr class="white border">
-            <th class="border px-4 py-2">District</th>
-            <th class="border px-4 py-2">Under Observation</th>
-            <th class="border px-4 py-2">Under Home Isolation</th>
-            <th class="border px-4 py-2">Total Hospitalised</th>
-            <th class="border px-4 py-2">Hospitalised Today</th>
-          </tr>
-          </thead>
-          <tbody>
+
+      <table class="table-fixed">
+        <thead>
+        <tr class="white border">
+          <th class="border px-4 py-2">District</th>
+          <th class="border px-4 py-2">Under Observation</th>
+          <th class="border px-4 py-2">Under Home Isolation</th>
+          <th class="border px-4 py-2">Total Hospitalised</th>
+          <th class="border px-4 py-2">Hospitalised Today</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% District.includes(:reports).all.each do |district| %>
+          <% report = district.reports.last %>
           <tr>
             <td class="border px-4 py-2"><%= district.name %></td>
             <td class="border px-4 py-2"><%= report.under_observation %></td>
@@ -26,33 +27,35 @@
             <td class="border px-4 py-2"><%= report.total_hospitalised %></td>
             <td class="border px-4 py-2"><%= report.hospitalised_today %></td>
           </tr>
-          </tbody>
-        </table>
-      <% end %>
+        <% end %>
+        </tbody>
+      </table>
+
     </div>
     <div class="mt-4">
-      <% District.includes(:reports).all.each do |district| %>
-        <% report = district.reports.last %>
-        <% next if report.corona_positive.zero? %>
-        <table class="table-auto">
-          <thead>
-          <tr class="white border">
-            <th class="border px-4 py-2">District</th>
-            <th class="border px-4 py-2">Corona Positive</th>
-            <th class="border px-4 py-2">Cured / Discharged</th>
-            <th class="border px-4 py-2">Deaths</th>
-          </tr>
-          </thead>
-          <tbody>
+
+      <table class="table-auto">
+        <thead>
+        <tr class="white border">
+          <th class="border px-4 py-2">District</th>
+          <th class="border px-4 py-2">Corona Positive</th>
+          <th class="border px-4 py-2">Cured / Discharged</th>
+          <th class="border px-4 py-2">Deaths</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% District.includes(:reports).all.each do |district| %>
+          <% report = district.reports.last %>
+          <% next if report.corona_positive.zero? %>
           <tr>
             <td class="border px-4 py-2"><%= district.name %></td>
             <td class="border px-4 py-2"><%= report.corona_positive %></td>
             <td class="border px-4 py-2"><%= report.cured_discharged %></td>
             <td class="border px-4 py-2"><%= report.deaths %></td>
           </tr>
-          </tbody>
-        </table>
-      <% end %>
+        <% end %>
+        </tbody>
+      </table>
     </div>
     <div class="text-4xl font-semibold px-4 md:px-0">
       1. Corona Literacy Mission
