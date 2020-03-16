@@ -41,12 +41,37 @@ ActiveRecord::Schema.define(version: 2020_03_14_165601) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "daily_reports", force: :cascade do |t|
-    t.integer "cases"
+  create_table "districts", force: :cascade do |t|
+    t.bigint "state_id"
+    t.string "name"
+    t.index ["state_id"], name: "index_districts_on_state_id"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.integer "under_observation"
+    t.integer "under_home_isolation"
+    t.integer "hospitalised_today"
+    t.integer "total_hospitalised"
+    t.integer "corona_positive"
     t.integer "cured_discharged"
     t.integer "deaths"
+    t.bigint "district_id"
+    t.index ["district_id"], name: "index_reports_on_district_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "title"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "title"
+  end
+
+  create_table "state_admin", force: :cascade do |t|
+    t.bigint "user_id"
     t.bigint "state_id"
-    t.index ["state_id"], name: "index_daily_reports_on_state_id"
+    t.index ["state_id"], name: "index_state_admin_on_state_id"
+    t.index ["user_id"], name: "index_state_admin_on_user_id"
   end
 
   create_table "states", force: :cascade do |t|
@@ -61,8 +86,24 @@ ActiveRecord::Schema.define(version: 2020_03_14_165601) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "age"
+    t.integer "mobile_number"
+    t.string "username"
+    t.string "sex"
+    t.bigint "district_id"
+    t.index ["district_id"], name: "index_users_on_district_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "volunteers", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "role_id"
+    t.bigint "skill_id"
+    t.boolean "available"
+    t.index ["role_id"], name: "index_volunteers_on_role_id"
+    t.index ["skill_id"], name: "index_volunteers_on_skill_id"
+    t.index ["user_id"], name: "index_volunteers_on_user_id"
   end
 
 end

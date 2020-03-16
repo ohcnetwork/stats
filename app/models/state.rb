@@ -1,3 +1,3 @@
 class State < ApplicationRecord
-  has_many :daily_reports
+  has_many :reports
 end
