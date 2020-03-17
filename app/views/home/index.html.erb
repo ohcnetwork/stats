@@ -1,19 +1,32 @@
 <div class="max-w-3xl mx-auto">
   <div class="text-5xl font-semibold px-4 md:px-0">
-    Welcome Rakshaka
+    <% if current_user.present? %>
+      You are rakshaka no: <%= current_user.volunteer&.id %>
+    <% else %>
+      Welcome Rakshaka
+    <% end %>
+
   </div>
 </div>
 <% if current_user.present? %>
-  <% districts = District.includes(:reports).all %>
+  <%
+    @districts ||= District.includes(:reports).all
+    @district_reports ||= District.includes(:reports).all.map { |d| d.reports.last }
+
+
+  %>
   <div class="max-w-3xl mx-auto">
     <div class="mt-4">
-
-      <table class="table-fixed">
-        <div>
-          Here is the current live situation of our state's Health care system
-        </div>
+      <div>
+        Here is the current live situation of our state's Health care system
+      </div>
+      <div class="mt-4 text-sm">
+        Details of persons under surveillance
+      </div>
+      <table class="table-fixed mt-4">
         <thead>
         <tr class="white border">
+          <th class="border px-4 py-2">No</th>
           <th class="border px-4 py-2">District</th>
           <th class="border px-4 py-2">Total people under observation</th>
           <th class="border px-4 py-2">People under Home Isolation</th>
@@ -22,9 +35,10 @@
         </tr>
         </thead>
         <tbody>
-        <% districts.each do |district| %>
+        <% @districts.each_with_index do |district, index| %>
           <% report = district.reports.last %>
           <tr>
+            <td class="border px-4 py-2"><%= index + 1 %></td>
             <td class="border px-4 py-2"><%= district.name %></td>
             <td class="border px-4 py-2"><%= report.under_observation %></td>
             <td class="border px-4 py-2"><%= report.under_home_isolation %></td>
@@ -32,12 +46,22 @@
             <td class="border px-4 py-2"><%= report.hospitalised_today %></td>
           </tr>
         <% end %>
+        <tr>
+          <td class="border font-semibold px-4 py-2"></td>
+          <td class="border font-semibold px-4 py-2">Total</td>
+          <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:under_observation).sum %></td>
+          <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:under_home_isolation).sum %></td>
+          <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:total_hospitalised).sum %></td>
+          <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:hospitalised_today).sum %></td>
+        </tr>
         </tbody>
       </table>
 
     </div>
     <div class="mt-4">
-
+      <div class="my-4 text-sm">
+        Chronology of Positive Cases
+      </div>
       <table class="table-auto">
         <thead>
         <tr class="white border">
@@ -48,7 +72,7 @@
         </tr>
         </thead>
         <tbody>
-        <% districts.each do |district| %>
+        <% @districts.each do |district| %>
           <% report = district.reports.last %>
           <% next if report.corona_positive.zero? %>
           <tr>
@@ -58,10 +82,16 @@
             <td class="border px-4 py-2"><%= report.deaths %></td>
           </tr>
         <% end %>
+        <tr>
+          <td class="border font-semibold px-4 py-2">Total</td>
+          <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:corona_positive).sum %></td>
+          <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:cured_discharged).sum %></td>
+          <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:deaths).sum %></td>
+        </tr>
         </tbody>
       </table>
     </div>
-    <div class="text-4xl font-semibold px-4 md:px-0">
+    <div class="mt-4 text-4xl font-semibold px-4 md:px-0">
       1. Corona Literacy Mission
     </div>
     <div class="flex flex-wrap md:-mx-3 pt-2">
