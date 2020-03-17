@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   resource :volunteers do
     get 'signup'
   end
+
+  get '/api/reports', action: 'reports', controller: 'api'
 end
