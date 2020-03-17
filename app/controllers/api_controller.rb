@@ -1,11 +1,10 @@
 class ApiController < ApplicationController
   def reports
-    reports = District.includes(:reports).all.map do |d|
+    reports = District.includes(:reports).all.each_with_object({}) do |d, obj|
       report = d.reports.last
-      {
-        "#{d.name}": report_data(report)
-      }
+      obj[d.name] = report_data(report)
     end
+
     render json: { kerala: reports }
   end
 
