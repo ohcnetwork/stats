@@ -14,6 +14,6 @@ class ApiController < ApplicationController
         deaths: report.deaths
       }
     end
-    render json: reports
+    render json: { kerala: reports }
   end
 end
