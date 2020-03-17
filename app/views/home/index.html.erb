@@ -1,5 +1,5 @@
 <div class="max-w-3xl mx-auto">
-  <div class="text-5xl font-semibold px-4 md:px-0">
+  <div class="text-2xl md:text-5xl font-semibold px-4 md:px-0">
     <% if current_user.present? %>
       You are rakshaka no: <%= current_user.volunteer&.id %>
     <% else %>
@@ -23,136 +23,144 @@
       <div class="mt-4 text-sm">
         Details of persons under surveillance
       </div>
-      <table class="table-fixed mt-4">
-        <thead>
-        <tr class="white border">
-          <th class="border px-4 py-2">No</th>
-          <th class="border px-4 py-2">District</th>
-          <th class="border px-4 py-2">Total people under observation</th>
-          <th class="border px-4 py-2">People under Home Isolation</th>
-          <th class="border px-4 py-2">people Hospitalised</th>
-          <th class="border px-4 py-2">Total people Hospitalised Today</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% @districts.each_with_index do |district, index| %>
-          <% report = district.reports.last %>
-          <tr>
-            <td class="border px-4 py-2"><%= index + 1 %></td>
-            <td class="border px-4 py-2"><%= district.name %></td>
-            <td class="border px-4 py-2"><%= report.under_observation %></td>
-            <td class="border px-4 py-2"><%= report.under_home_isolation %></td>
-            <td class="border px-4 py-2"><%= report.total_hospitalised %></td>
-            <td class="border px-4 py-2"><%= report.hospitalised_today %></td>
-          </tr>
-        <% end %>
-        <tr>
-          <td class="border font-semibold px-4 py-2"></td>
-          <td class="border font-semibold px-4 py-2">Total</td>
-          <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:under_observation).sum %></td>
-          <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:under_home_isolation).sum %></td>
-          <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:total_hospitalised).sum %></td>
-          <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:hospitalised_today).sum %></td>
-        </tr>
-        </tbody>
-      </table>
+      <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+        <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+          <table class="min-w-full">
+            <thead>
+            <tr class="white border">
+              <th class="border px-4 py-2">No</th>
+              <th class="border px-4 py-2">District</th>
+              <th class="border px-4 py-2">Total people under observation</th>
+              <th class="border px-4 py-2">People under Home Isolation</th>
+              <th class="border px-4 py-2">people Hospitalised</th>
+              <th class="border px-4 py-2">Total people Hospitalised Today</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @districts.each_with_index do |district, index| %>
+              <% report = district.reports.last %>
+              <tr>
+                <td class="border px-4 py-2"><%= index + 1 %></td>
+                <td class="border px-4 py-2"><%= district.name %></td>
+                <td class="border px-4 py-2"><%= report.under_observation %></td>
+                <td class="border px-4 py-2"><%= report.under_home_isolation %></td>
+                <td class="border px-4 py-2"><%= report.total_hospitalised %></td>
+                <td class="border px-4 py-2"><%= report.hospitalised_today %></td>
+              </tr>
+            <% end %>
+            <tr>
+              <td class="border font-semibold px-4 py-2"></td>
+              <td class="border font-semibold px-4 py-2">Total</td>
+              <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:under_observation).sum %></td>
+              <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:under_home_isolation).sum %></td>
+              <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:total_hospitalised).sum %></td>
+              <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:hospitalised_today).sum %></td>
+            </tr>
+            </tbody>
+          </table>
 
-    </div>
-    <div class="mt-4">
-      <div class="my-4 text-sm">
-        Chronology of Positive Cases
+        </div>
       </div>
-      <table class="table-auto">
-        <thead>
-        <tr class="white border">
-          <th class="border px-4 py-2">District</th>
-          <th class="border px-4 py-2">Corona Positive</th>
-          <th class="border px-4 py-2">Cured / Discharged</th>
-          <th class="border px-4 py-2">Deaths</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% @districts.each do |district| %>
-          <% report = district.reports.last %>
-          <% next if report.corona_positive.zero? %>
-          <tr>
-            <td class="border px-4 py-2"><%= district.name %></td>
-            <td class="border px-4 py-2"><%= report.corona_positive %></td>
-            <td class="border px-4 py-2"><%= report.cured_discharged %></td>
-            <td class="border px-4 py-2"><%= report.deaths %></td>
-          </tr>
-        <% end %>
-        <tr>
-          <td class="border font-semibold px-4 py-2">Total</td>
-          <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:corona_positive).sum %></td>
-          <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:cured_discharged).sum %></td>
-          <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:deaths).sum %></td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="mt-4 text-4xl font-semibold px-4 md:px-0">
-      1. Corona Literacy Mission
-    </div>
-    <div class="flex flex-wrap md:-mx-3 pt-2">
-      <a href="https://coronasafe.in/" target="blank" class="w-full md:w-1/2 p-4">
-        <div class="p-4 border-2 border-gray-800 rounded-lg bg-red-100 px-4 py-6 md:px-6 rounded shadow">
-          <div class="font-semibold text-md md:text-3xl">
-            coronasafe.in
-          </div>
-          <div class="text-md md:text-lg">
-            A verified crowd-sourced guide to staying safe in Coronavirus disease (COVID-19) outbreak.
-          </div>
-        </div>
-      </a>
 
-      <a href="https://ml.coronasafe.in/" target="blank" class="w-full md:w-1/2 p-4">
-        <div class="p-4 border-2 border-gray-800 rounded-lg bg-blue-100 px-4 py-6 md:px-6 rounded shadow">
-          <div class="font-semibold text-md md:text-3xl">
-            ml.coronasafe.in
-          </div>
-          <div class="text-md md:text-lg">
-            കൊറോണ വൈറസ് രോഗം Covid 19 പടരുന്നതിനാൽ സുരക്ഷിതമായി തുടരാനുള്ള വഴികാട്ടി
+      <div class="mt-4">
+        <div class="my-4 text-sm">
+          Chronology of Positive Cases
+        </div>
+        <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+          <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+            <table class="min-w-full">
+              <thead>
+              <tr class="white border">
+                <th class="border px-4 py-2">District</th>
+                <th class="border px-4 py-2">Corona Positive</th>
+                <th class="border px-4 py-2">Cured / Discharged</th>
+                <th class="border px-4 py-2">Deaths</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @districts.each do |district| %>
+                <% report = district.reports.last %>
+                <% next if report.corona_positive.zero? %>
+                <tr>
+                  <td class="border px-4 py-2"><%= district.name %></td>
+                  <td class="border px-4 py-2"><%= report.corona_positive %></td>
+                  <td class="border px-4 py-2"><%= report.cured_discharged %></td>
+                  <td class="border px-4 py-2"><%= report.deaths %></td>
+                </tr>
+              <% end %>
+              <tr>
+                <td class="border font-semibold px-4 py-2">Total</td>
+                <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:corona_positive).sum %></td>
+                <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:cured_discharged).sum %></td>
+                <td class="border font-semibold px-4 py-2"><%= @district_reports.pluck(:deaths).sum %></td>
+              </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-      </a>
+      </div>
+      <div class="mt-4 text-4xl font-semibold px-4 md:px-0">
+        1. Corona Literacy Mission
+      </div>
+      <div class="flex flex-wrap md:-mx-3 pt-2">
+        <a href="https://coronasafe.in/" target="blank" class="w-full md:w-1/2 p-4">
+          <div class="p-4 border-2 border-gray-800 rounded-lg bg-red-100 px-4 py-6 md:px-6 rounded shadow">
+            <div class="font-semibold text-md md:text-3xl">
+              coronasafe.in
+            </div>
+            <div class="text-md md:text-lg">
+              A verified crowd-sourced guide to staying safe in Coronavirus disease (COVID-19) outbreak.
+            </div>
+          </div>
+        </a>
 
-      <a href="https://quiz.coronasafe.in/" target="blank" class="w-full md:w-1/2 p-4">
-        <div class="p-4 border-2 border-gray-800 rounded-lg bg-green-100 px-4 py-6 md:px-6 rounded shadow ">
-          <div class="font-semibold text-md md:text-3xl">
-            quiz.coronasafe.in
+        <a href="https://ml.coronasafe.in/" target="blank" class="w-full md:w-1/2 p-4">
+          <div class="p-4 border-2 border-gray-800 rounded-lg bg-blue-100 px-4 py-6 md:px-6 rounded shadow">
+            <div class="font-semibold text-md md:text-3xl">
+              ml.coronasafe.in
+            </div>
+            <div class="text-md md:text-lg">
+              കൊറോണ വൈറസ് രോഗം Covid 19 പടരുന്നതിനാൽ സുരക്ഷിതമായി തുടരാനുള്ള വഴികാട്ടി
+            </div>
           </div>
-          <div class="text-md md:text-lg">
-            WHO Quiz on COVID-19. Currently the questions are available in english and malayalam
+        </a>
+
+        <a href="https://quiz.coronasafe.in/" target="blank" class="w-full md:w-1/2 p-4">
+          <div class="p-4 border-2 border-gray-800 rounded-lg bg-green-100 px-4 py-6 md:px-6 rounded shadow ">
+            <div class="font-semibold text-md md:text-3xl">
+              quiz.coronasafe.in
+            </div>
+            <div class="text-md md:text-lg">
+              WHO Quiz on COVID-19. Currently the questions are available in english and malayalam
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
-    <div class="text-4xl font-semibold mt-4 px-4 md:px-0">
-      2. Corona Care Network
-    </div>
-    <div class="flex flex-wrap md:-mx-3 pt-2">
-      <a href="https://model.coronasafe.in/" target="blank" class="w-full md:w-1/2 p-4">
-        <div class="p-4 border-2 border-gray-800 rounded-lg bg-gray-100 px-4 py-6 md:px-6 rounded shadow">
-          <div class="font-semibold text-md md:text-3xl">
-            Kerala Model
+        </a>
+      </div>
+      <div class="text-4xl font-semibold mt-4 px-4 md:px-0">
+        2. Corona Care Network
+      </div>
+      <div class="flex flex-wrap md:-mx-3 pt-2">
+        <a href="https://model.coronasafe.in/" target="blank" class="w-full md:w-1/2 p-4">
+          <div class="p-4 border-2 border-gray-800 rounded-lg bg-gray-100 px-4 py-6 md:px-6 rounded shadow">
+            <div class="font-semibold text-md md:text-3xl">
+              Kerala Model
+            </div>
+            <div class="text-md md:text-lg">
+              Template for Converting an Educational Institution into a Corona Care Center (CCC)
+            </div>
           </div>
-          <div class="text-md md:text-lg">
-            Template for Converting an Educational Institution into a Corona Care Center (CCC)
+        </a>
+        <a href="https://map.coronasafe.in/" target="blank" class="w-full md:w-1/2 p-4">
+          <div class="p-4 border-2 border-gray-800 rounded-lg bg-orange-100 px-4 py-6 md:px-6 rounded shadow ">
+            <div class="font-semibold text-md md:text-3xl">
+              map.coronasafe.in
+            </div>
+            <div class="text-md md:text-lg">
+              Realtime map-based updates on COVID-19 cases in India along with directions to test centers.
+            </div>
           </div>
-        </div>
-      </a>
-      <a href="https://map.coronasafe.in/" target="blank" class="w-full md:w-1/2 p-4">
-        <div class="p-4 border-2 border-gray-800 rounded-lg bg-orange-100 px-4 py-6 md:px-6 rounded shadow ">
-          <div class="font-semibold text-md md:text-3xl">
-            map.coronasafe.in
-          </div>
-          <div class="text-md md:text-lg">
-            Realtime map-based updates on COVID-19 cases in India along with directions to test centers.
-          </div>
-        </div>
-      </a>
-    </div>
+        </a>
+      </div>
 <% else %>
   <div class="max-w-3xl mx-auto mt-4">
     <div class="flex flex-wrap md:-mx-3 pt-2">

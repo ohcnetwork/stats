@@ -43,8 +43,9 @@
         </div>
       </div>
     </div>
-
-    <%= yield %>
+    <div class="px-2">
+      <%= yield %>
+    </div>
     <% if current_user.present? %>
       <%= button_to destroy_user_session_path, method: :delete, class: "text-xs px-1 py-1 rounded shadow-sm border border-gray-500 text-gray-600" do %>
         <div class="flex items-center btn">
