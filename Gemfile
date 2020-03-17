@@ -20,7 +20,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'reform', '~> 2.2' # Form objects decoupled from models. http://www.trailblazer.to/gems/reform
 
-gem 'rack-cors', '~> 0.4.0'
+gem 'rack-cors'
 
 gem 'reform-rails', '~> 0.1'
 # Use Redis adapter to run Action Cable in production
