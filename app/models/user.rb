@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   belongs_to :district
   has_one :volunteer
+
+
 end
