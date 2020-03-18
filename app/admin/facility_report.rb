@@ -1,5 +1,6 @@
-ActiveAdmin.register Report do
-  permit_params :under_observation, :under_home_isolation, :hospitalised_today, :total_hospitalised, :corona_positive, :cured_discharged, :deaths, :district_id
+ActiveAdmin.register FacilityReport do
+  permit_params :under_observation, :under_home_isolation, :hospitalised_today, :total_hospitalised, :corona_positive,
+    :cured_discharged, :deaths, :facility_id, :number_of_beds_available, :number_of_icu_beds_available
 
   index do
     selectable_column
@@ -11,11 +12,13 @@ ActiveAdmin.register Report do
     column :corona_positive
     column :cured_discharged
     column :deaths
-    column :district
+    column :facility
+    column :number_of_beds_available
+    column :number_of_icu_beds_available
     actions
   end
 
-  filter :district
+  filter :facility
 
   form do |f|
     f.inputs do
@@ -26,10 +29,12 @@ ActiveAdmin.register Report do
       f.input :corona_positive
       f.input :cured_discharged
       f.input :deaths
-      f.input :district, as: :select
+      f.input :number_of_beds_available
+      f.input :number_of_icu_beds_available
+      f.input :facility, as: :select
     end
     f.actions
   end
 
-  menu parent: 'Districts'
+  menu parent: 'facilities'
 end

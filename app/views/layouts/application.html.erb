@@ -47,15 +47,16 @@
       <%= yield %>
     </div>
     <% if current_user.present? %>
-      <%= button_to destroy_user_session_path, method: :delete, class: "text-xs px-1 py-1 rounded shadow-sm border border-gray-500 text-gray-600" do %>
-        <div class="flex items-center btn">
-          <span>Logout</span>
-        </div>
-      <% end %>
+      <div class="max-w-fc mx-auto my-4">
+        <%= button_to destroy_user_session_path, method: :delete, class: "text-xs px-1 py-1 rounded shadow-sm border border-gray-500 text-gray-600" do %>
+          <div class="flex items-center btn">
+            <span>Logout</span>
+          </div>
+        <% end %>
     <% end %>
+    </div>
   </main>
   <%#= yield :footer %>
-
 </section>
 </body>
 </html>

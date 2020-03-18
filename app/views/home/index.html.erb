@@ -12,8 +12,6 @@
   <%
     @districts ||= District.includes(:reports).all
     @district_reports ||= District.includes(:reports).all.map { |d| d.reports.last }
-
-
   %>
   <div class="max-w-3xl mx-auto">
     <div class="mt-4">
@@ -99,68 +97,8 @@
           </div>
         </div>
       </div>
-      <div class="mt-4 text-4xl font-semibold px-4 md:px-0">
-        1. Corona Literacy Mission
-      </div>
-      <div class="flex flex-wrap md:-mx-3 pt-2">
-        <a href="https://coronasafe.in/" target="blank" class="w-full md:w-1/2 p-4">
-          <div class="p-4 border-2 border-gray-800 rounded-lg bg-red-100 px-4 py-6 md:px-6 rounded shadow">
-            <div class="font-semibold text-md md:text-3xl">
-              coronasafe.in
-            </div>
-            <div class="text-md md:text-lg">
-              A verified crowd-sourced guide to staying safe in Coronavirus disease (COVID-19) outbreak.
-            </div>
-          </div>
-        </a>
-
-        <a href="https://ml.coronasafe.in/" target="blank" class="w-full md:w-1/2 p-4">
-          <div class="p-4 border-2 border-gray-800 rounded-lg bg-blue-100 px-4 py-6 md:px-6 rounded shadow">
-            <div class="font-semibold text-md md:text-3xl">
-              ml.coronasafe.in
-            </div>
-            <div class="text-md md:text-lg">
-              കൊറോണ വൈറസ് രോഗം Covid 19 പടരുന്നതിനാൽ സുരക്ഷിതമായി തുടരാനുള്ള വഴികാട്ടി
-            </div>
-          </div>
-        </a>
-
-        <a href="https://quiz.coronasafe.in/" target="blank" class="w-full md:w-1/2 p-4">
-          <div class="p-4 border-2 border-gray-800 rounded-lg bg-green-100 px-4 py-6 md:px-6 rounded shadow ">
-            <div class="font-semibold text-md md:text-3xl">
-              quiz.coronasafe.in
-            </div>
-            <div class="text-md md:text-lg">
-              WHO Quiz on COVID-19. Currently the questions are available in english and malayalam
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="text-4xl font-semibold mt-4 px-4 md:px-0">
-        2. Corona Care Network
-      </div>
-      <div class="flex flex-wrap md:-mx-3 pt-2">
-        <a href="https://model.coronasafe.in/" target="blank" class="w-full md:w-1/2 p-4">
-          <div class="p-4 border-2 border-gray-800 rounded-lg bg-gray-100 px-4 py-6 md:px-6 rounded shadow">
-            <div class="font-semibold text-md md:text-3xl">
-              Kerala Model
-            </div>
-            <div class="text-md md:text-lg">
-              Template for Converting an Educational Institution into a Corona Care Center (CCC)
-            </div>
-          </div>
-        </a>
-        <a href="https://map.coronasafe.in/" target="blank" class="w-full md:w-1/2 p-4">
-          <div class="p-4 border-2 border-gray-800 rounded-lg bg-orange-100 px-4 py-6 md:px-6 rounded shadow ">
-            <div class="font-semibold text-md md:text-3xl">
-              map.coronasafe.in
-            </div>
-            <div class="text-md md:text-lg">
-              Realtime map-based updates on COVID-19 cases in India along with directions to test centers.
-            </div>
-          </div>
-        </a>
-      </div>
+    </div>
+  </div>
 <% else %>
   <div class="max-w-3xl mx-auto mt-4">
     <div class="flex flex-wrap md:-mx-3 pt-2">

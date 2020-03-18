@@ -19,4 +19,5 @@ ActiveAdmin.register StateAdmin do
     f.actions
   end
 
+  menu parent: 'dashboard'
 end

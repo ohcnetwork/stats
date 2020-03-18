@@ -17,4 +17,5 @@ ActiveAdmin.register Role do
     f.actions
   end
 
+  menu parent: 'Volunteers'
 end

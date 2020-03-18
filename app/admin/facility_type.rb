@@ -1,4 +1,4 @@
-ActiveAdmin.register Skill do
+ActiveAdmin.register FacilityType do
   permit_params :title
 
   index do
@@ -17,5 +17,5 @@ ActiveAdmin.register Skill do
     f.actions
   end
 
-  menu parent: 'Volunteers'
+  menu parent: 'facilities'
 end
