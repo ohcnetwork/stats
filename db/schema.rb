@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_18_064240) do
+ActiveRecord::Schema.define(version: 2020_03_18_153030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,13 +49,7 @@ ActiveRecord::Schema.define(version: 2020_03_18_064240) do
   end
 
   create_table "facility_reports", force: :cascade do |t|
-    t.integer "under_observation"
-    t.integer "under_home_isolation"
     t.integer "hospitalised_today"
-    t.integer "total_hospitalised"
-    t.integer "corona_positive"
-    t.integer "cured_discharged"
-    t.integer "deaths"
     t.integer "number_of_beds_available"
     t.integer "number_of_icu_beds_available"
     t.bigint "facility_id"
