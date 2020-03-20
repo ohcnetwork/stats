@@ -22,6 +22,8 @@ gem 'reform', '~> 2.2' # Form objects decoupled from models. http://www.trailbla
 
 gem 'rack-cors'
 
+gem "chartkick"
+
 gem 'reform-rails', '~> 0.1'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

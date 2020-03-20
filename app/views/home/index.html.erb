@@ -3,22 +3,44 @@
     <% if current_user.present? %>
       You are rakshaka no: <%= current_user.volunteer&.id %>
     <% else %>
-      Welcome Rakshaka
+      Volunteer Call
     <% end %>
-
   </div>
 </div>
-<% if current_user.present? %>
-  <%
-    @districts ||= District.includes(:reports).all
-    @district_reports ||= District.includes(:reports).all.map { |d| d.reports.last }
-  %>
-  <div class="max-w-3xl mx-auto">
-    <div class="mt-4">
-      <div>
+
+<%
+  @districts ||= District.includes(:reports).all
+  @district_reports ||= District.includes(:reports).all.map { |d| d.reports.last }
+%>
+<div class="max-w-3xl mx-auto">
+  <div class="mt-4">
+
+    <div>
+      <div class="w-full p-4">
+        <div class="p-4 border-2 border-gray-800 rounded-lg bg-red-100 px-4 py-6 md:px-6 rounded shadow">
+          <div class="font-semibold text-md md:text-3xl">
+            Call For Engineering Volunteers
+          </div>
+          <div class="text-md md:text-lg">
+            coronasafe.network is an opensource community managed project with more 20 application running live. We are
+            looking for developers to help us ship out faster.
+          </div>
+          <a href="https://docs.google.com/forms/d/1_ZmCzJzR3RdnP8TQ-SBlvn0SY_vhLZ7r8BQo068BU1Q/viewform?edit_requested=true" target="_blank" class="btn-primary btn mt-4 ">Apply
+            Now</a>
+        </div>
+      </div>
+    </div>
+    <!--      <div>-->
+    <%#= bar_chart District.includes(:reports).all.map { |d| {name: d.name, report: d.reports.last.total_hospitalised } } %>
+    <!--      </div>-->
+    <div class="p-6">
+      <div class="text-2xl md:text-5xl font-semibold px-4 md:px-0">
+        Current Status In Kerala
+      </div>
+      <div class="font-bold text-xl">
         Here is the current live situation of our state's Health care system
       </div>
-      <div class="mt-4 text-sm">
+      <div class="font-semibold text-xl my-4">
         Details of persons under surveillance
       </div>
       <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
@@ -61,7 +83,7 @@
       </div>
 
       <div class="mt-4">
-        <div class="my-4 text-sm">
+        <div class="font-semibold text-xl my-4">
           Chronology of Positive Cases
         </div>
         <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
@@ -99,23 +121,23 @@
       </div>
     </div>
   </div>
-<% else %>
-  <div class="max-w-3xl mx-auto mt-4">
-    <div class="flex flex-wrap md:-mx-3 pt-2">
-      <a href="/volunteers/signup" class="w-full md:w-1/2 p-4">
-        <div class="p-4 border-2 border-red-800 rounded-lg bg-red-100 px-4 py-6 md:px-6 rounded shadow">
-          <div class="font-semibold text-md md:text-3xl">
-            Apply Now
-          </div>
-        </div>
-      </a>
-      <a href="/users/sign_in" class="w-full md:w-1/2 p-4">
-        <div class="p-4 border-2 border-green-800 rounded-lg bg-green-100 px-4 py-6 md:px-6 rounded shadow">
-          <div class="font-semibold text-md md:text-3xl">
-            Login
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-<% end %>
+</div>
+
+<!--  <div class="max-w-3xl mx-auto mt-4">-->
+<!--    <div class="flex flex-wrap md:-mx-3 pt-2">-->
+<!--      <a href="/volunteers/signup" class="w-full md:w-1/2 p-4">-->
+<!--        <div class="p-4 border-2 border-red-800 rounded-lg bg-red-100 px-4 py-6 md:px-6 rounded shadow">-->
+<!--          <div class="font-semibold text-md md:text-3xl">-->
+<!--            Apply Now-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </a>-->
+<!--      <a href="/users/sign_in" class="w-full md:w-1/2 p-4">-->
+<!--        <div class="p-4 border-2 border-green-800 rounded-lg bg-green-100 px-4 py-6 md:px-6 rounded shadow">-->
+<!--          <div class="font-semibold text-md md:text-3xl">-->
+<!--            Login-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </a>-->
+<!--    </div>-->
+<!--  </div>-->
