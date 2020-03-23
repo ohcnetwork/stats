@@ -15,4 +15,11 @@ Rails.application.routes.draw do
   end
 
   get '/api/reports', action: 'reports', controller: 'api'
+
+  get '/data_scientist', action: 'data_scientist', controller: 'home'
+  get '/engineer', action: 'engineer', controller: 'home'
+  get '/medical', action: 'medical', controller: 'home'
+
+  get '/punjab', action: 'index', controller: 'punjab'
+  get '/punjab/engineer', action: 'engineer', controller: 'home'
 end
