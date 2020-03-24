@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_18_153030) do
+ActiveRecord::Schema.define(version: 2020_03_24_155005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(version: 2020_03_18_153030) do
     t.integer "cured_discharged"
     t.integer "deaths"
     t.bigint "district_id"
-    t.datetime "created_at", precision: 6, default: "2020-03-16 20:09:21", null: false
-    t.datetime "updated_at", precision: 6, default: "2020-03-16 20:09:21", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["district_id"], name: "index_reports_on_district_id"
   end
 

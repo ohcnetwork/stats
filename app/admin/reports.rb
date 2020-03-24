@@ -1,5 +1,5 @@
 ActiveAdmin.register Report do
-  permit_params :under_observation, :under_home_isolation, :hospitalised_today, :total_hospitalised, :corona_positive, :cured_discharged, :deaths, :district_id
+  permit_params :under_observation, :under_home_isolation, :hospitalised_today, :updated_at, :created_at, :total_hospitalised, :corona_positive, :cured_discharged, :deaths, :district_id
 
   index do
     selectable_column
@@ -26,6 +26,8 @@ ActiveAdmin.register Report do
       f.input :corona_positive
       f.input :cured_discharged
       f.input :deaths
+      f.input :created_at
+      f.input :updated_at
       f.input :district, as: :select
     end
     f.actions
