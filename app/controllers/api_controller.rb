@@ -1,7 +1,7 @@
 class ApiController < ApplicationController
   def reports
     reports = District.includes(:reports).all.each_with_object({}) do |d, obj|
-      report = d.reports.last
+      report = d.reports.order(:created_at).last
       obj[d.name] = report_data(report)
     end
 

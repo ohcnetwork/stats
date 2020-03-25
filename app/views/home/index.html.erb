@@ -152,7 +152,7 @@
             </thead>
             <tbody>
             <% @districts.each_with_index do |district, index| %>
-            <% report = district.reports.last %>
+            <% report = district.reports.order(:created_at).last %>
             <tr>
               <td class="border px-4 py-2"><%= index + 1 %></td>
               <td class="border px-4 py-2"><%= district.name %></td>
@@ -193,7 +193,7 @@
               </thead>
               <tbody>
               <% @districts.each do |district| %>
-              <% report = district.reports.last %>
+              <% report = district.reports.order(:created_at).last %>
               <% next if report.corona_positive.zero? %>
               <tr>
                 <td class="border px-4 py-2"><%= district.name %></td>

@@ -11,7 +11,7 @@ ActiveAdmin.register StateReport do
     column :corona_positive
     column :cured_discharged
     column :deaths
-    column :district
+    column :state
     column :number_of_negative_samples
     column :number_samples_tested
     column :created_at
