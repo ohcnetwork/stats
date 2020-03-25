@@ -12,6 +12,7 @@ ActiveAdmin.register Report do
     column :cured_discharged
     column :deaths
     column :district
+    column :created_at
     actions
   end
 
