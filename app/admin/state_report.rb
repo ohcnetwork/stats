@@ -14,6 +14,7 @@ ActiveAdmin.register StateReport do
     column :district
     column :number_of_negative_samples
     column :number_samples_tested
+    column :created_at
     actions
   end
 
