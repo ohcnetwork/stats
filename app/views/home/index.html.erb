@@ -10,7 +10,7 @@
 
 <%
   @districts ||= District.includes(:reports).all
-  @district_reports ||= District.includes(:reports).all.map { |d| d.reports.last }
+  @district_reports ||= District.includes(:reports).all.map { |d| d.reports.order(:created_at).last }
 %>
 <div class="max-w-3xl mx-auto">
   <div class="mt-4">
