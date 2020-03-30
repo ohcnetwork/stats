@@ -39,7 +39,9 @@ class ApiController < ApplicationController
       hospitalised_today: report.hospitalised_today,
       corona_positive: report.corona_positive,
       cured_discharged: report.cured_discharged,
-      deaths: report.deaths
+      deaths: report.deaths,
+      number_samples_tested: report.number_samples_tested,
+      number_of_negative_samples: report.number_of_negative_samples
     }
   end
 end
