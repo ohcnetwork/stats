@@ -20,14 +20,26 @@ class ApiController < ApplicationController
   def all_stats
     districts = {}
     District.all.map { |d| districts[d.id] = d.name }
-    reports = Report.all.each_with_object({}) do |r, obj|
-      obj[districts[r.district_id]] = report_data(r)
-    end
 
-    render json: { reports: reports }
+    render json: { reports: Report.all.map { |r| report_all(r, districts) } }
   end
 
   private
+
+  def report_all(report, district)
+    {
+      under_observation: report.under_observation,
+      under_home_isolation: report.under_home_isolation,
+      total_hospitalised: report.total_hospitalised,
+      hospitalised_today: report.hospitalised_today,
+      corona_positive: report.corona_positive,
+      cured_discharged: report.cured_discharged,
+      deaths: report.deaths,
+      date: report.created_at,
+      district_id: report.district_id,
+      district_name: district[report.district_id]
+    }
+  end
 
   def report_data(report)
     {
