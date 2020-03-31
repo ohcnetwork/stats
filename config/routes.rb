@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   get '/api/reports', action: 'reports', controller: 'api'
   get '/api/kerala/summary', action: 'kerala_summary', controller: 'api'
+  get '/api/kerala/all', action: 'all_stats', controller: 'api'
 
   get '/data_scientist', action: 'data_scientist', controller: 'home'
   get '/engineer', action: 'engineer', controller: 'home'
