@@ -18,7 +18,7 @@ class ApiController < ApplicationController
   end
 
   def kerala_summary_all
-    StateReport.where(state_id: 1).map do |report|
+    reports = StateReport.where(state_id: 1).map do |report|
       {
         under_observation: report.under_observation,
         under_home_isolation: report.under_home_isolation,
@@ -35,14 +35,14 @@ class ApiController < ApplicationController
       }
     end
 
-    render json: { report: reports }
+    render json: reports
   end
 
   def all_stats
     districts = {}
     District.all.map { |d| districts[d.id] = d.name }
 
-    render json: { reports: Report.all.map { |r| report_all(r, districts) } }
+    render json: Report.all.map { |r| report_all(r, districts) }
   end
 
   private
