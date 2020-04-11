@@ -13,7 +13,6 @@
   @district_reports ||= District.includes(:reports).all.map { |d| d.reports.order(:created_at).last }
 %>
 <div class="max-w-3xl mx-auto">
-  https://forms.gle/P6143Et4mtvf22z6A
   <div class="mt-4">
     <div class="w-full p-4">
       <div class="p-4 border-2 border-pink-800 rounded-lg bg-pink-100 px-4 py-6 md:px-6 rounded shadow">
