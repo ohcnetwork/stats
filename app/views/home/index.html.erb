@@ -39,8 +39,11 @@ end
           <%= news.title %>
         </div>
         <div>
-          <a class="font-semibold" href="https://volunteer.coronasafe.network/<%=news.slug%>">
+          <a class="font-semibold hidden md:block text-blue-900" href="https://volunteer.coronasafe.network/<%=news.slug%>">
             https://volunteer.coronasafe.network/<%=news.slug%>
+          </a>
+          <a class="font-semibold md:hidden text-blue-900" href="https://volunteer.coronasafe.network/<%=news.slug%>">
+            Link
           </a>
         </div>
         <% if news.description.present? %>
