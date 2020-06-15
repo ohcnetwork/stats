@@ -1,3 +1,21 @@
+<%
+def color(id)
+  case id % 5
+    when 4
+      "border-yellow-800 bg-yellow-100"
+    when 3
+      "border-blue-800 bg-blue-100"
+    when 2
+      "border-green-800 bg-green-100"
+    when 1
+      "border-red-800 bg-red-100"
+    when 1
+      "border-orange-800 bg-orange-100"
+    else
+      "border-gray-800 bg-gray-100"
+  end
+end
+%>
 <div class="max-w-3xl mx-auto">
   <div class="text-2xl md:text-5xl font-semibold px-4 md:px-0">
     <% if current_user.present? %>
@@ -14,12 +32,15 @@
 %>
 <div class="max-w-3xl mx-auto">
   <div class="mt-4">
-    <% News.all.each do |news| %>
+    <% News.all.reverse.each do |news| %>
     <div class="w-full p-4">
-      <div class="p-4 border-2 border-pink-800 rounded-lg bg-pink-100 px-4 py-6 md:px-6 rounded shadow">
+      <div class="p-4 border-2 rounded-lg px-4 py-6 md:px-6 rounded shadow <%=color(news.id) %>">
         <div class="font-semibold text-md md:text-3xl">
           <%= news.title %>
         </div>
+        <a class="font-semibold" href="https://volunteer.coronasafe.network/<%=news.slug%>">
+          https://volunteer.coronasafe.network/<%=news.slug%>
+        </a>
         <% if news.description.present? %>
         <div class="text-md md:text-lg">
           <p class="mt-4">
@@ -30,272 +51,9 @@
         <a href=<%= news.link %> target="_blank" class="btn-primary btn mt-4 ">Know More
         </a>
       </div>
+
     </div>
     <%end%>
-    <div class="w-full p-4">
-      <div class="p-4 border-2 border-pink-800 rounded-lg bg-pink-100 px-4 py-6 md:px-6 rounded shadow">
-        <div class="font-semibold text-md md:text-3xl">
-          Volunteer Call for Coronasafe Programme co-ordinators
-        </div>
-        <a href="https://forms.gle/NsEd5CjWsZMjP4m79" target="_blank" class="btn-primary btn mt-4 ">Apply
-          Now
-        </a>
-      </div>
-    </div>
-
-    <div class="w-full p-4">
-      <div class="p-4 border-2 border-pink-800 rounded-lg bg-pink-100 px-4 py-6 md:px-6 rounded shadow">
-        <div class="font-semibold text-md md:text-3xl">
-          Call for Community Kitchen Volunteers
-        </div>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdL2ehgj_DowMRepDgSDHE0PCnmlxoMn6eAdd-TzFUELJXosA/viewform" target="_blank" class="btn-primary btn mt-4 ">Apply
-          Now
-        </a>
-      </div>
-    </div>
-    <div class="w-full p-4">
-      <div class="p-4 border-2 border-pink-800 rounded-lg bg-pink-100 px-4 py-6 md:px-6 rounded shadow">
-        <div class="font-semibold text-md md:text-3xl">
-          Call for Tailors from Ernakulam
-        </div>
-        <div class="text-md md:text-lg">
-          <p class="mt-4">
-            There are an urgent requirement fo TAILORS to work in the production line of special safety suit designed
-            for Coronasafe project. Coronasafe Network is an open-source public utility designed by a multi-disciplinary
-            team of innovators and volunteers who are working on a model to support Government efforts with full
-            understanding and support of the Government of Kerala.
-          </p>
-        </div>
-        <a href="https://forms.gle/P6143Et4mtvf22z6A" target="_blank" class="btn-primary btn mt-4 ">Apply
-          Now
-        </a>
-      </div>
-    </div>
-    <div class="w-full p-4">
-      <div class="p-4 border-2 border-indigo-800 rounded-lg bg-indigo-100 px-4 py-6 md:px-6 rounded shadow">
-        <div class="font-semibold text-md md:text-3xl">
-          Call for Emergency Logistics Network
-        </div>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfZzdrGTlZLDp3xYXx1kFEh20nNelNHJYus9lYcsG2kJ47YDw/viewform" target="_blank" class="btn-primary btn mt-4 ">Apply
-          Now
-        </a>
-      </div>
-    </div>
-    <div class="w-full p-4">
-      <div class="p-4 border-2 border-yellow-800 rounded-lg bg-yellow-100 px-4 py-6 md:px-6 rounded shadow">
-        <div class="font-semibold text-md md:text-3xl">
-          Call for Blockchain Developers
-        </div>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSetdXRfWCcmIexV_LwxZklSn8BcawDfuNG6rpitD27qXN862Q/viewform" target="_blank" class="btn-primary btn mt-4 ">Apply
-          Now
-        </a>
-      </div>
-    </div>
-    <div class="w-full p-4">
-      <div class="p-4 border-2 border-red-800 rounded-lg bg-red-100 px-4 py-6 md:px-6 rounded shadow">
-        <div class="font-semibold text-md md:text-3xl">
-          Call for Corona Care Volunteers
-        </div>
-        <div class="text-md md:text-lg">
-          <p class="mt-4">
-            This is a call for Volunteers who have already defeated Corona. CoronaSafe Network is a group of
-            multi-disciplinary teams of volunteers working along with the Government of Kerala.<br><br>
-
-            Our goal is to create a community of volunteers who have already recovered from the coronavirus and have
-            built immunity against it. These volunteers will be frontline workers in the healthcare network at block and
-            panchayat levels across Kerala to assist our clinical team.<br><br>
-
-            Such volunteers will be valued for their effort as well as for spreading the positive message that the virus
-            can easily be defeated by our body's immunity systems, with or without external medical aid.<br><br>
-
-            Criteria: People who are Corona cured /discharged from the hospital and completed 14 days of isolation after
-            discharge (Age: between 18 - 50)
-            <br><br>
-            We will train you to:<br>
-            - Manage Corona Community Centers<br>
-            - Operate Corona Testing Centers<br>
-            - Do home visits with Field Clinical Team<br>
-          </p>
-        </div>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWL7p2O_zZ0dikwm67qIw_T6gI_INUF86Q5mAGSsvLSUIXCQ/viewform?usp=sf_link" target="_blank" class="btn-primary btn mt-4 ">Apply
-          Now
-        </a>
-      </div>
-    </div>
-    <div class="w-full p-4">
-      <div class="p-4 border-2 border-blue-800 rounded-lg bg-blue-100 px-4 py-6 md:px-6 rounded shadow">
-        <div class="font-semibold text-md md:text-3xl">
-          Call for Photography/Videography Volunteers-Ernakulam District
-        </div>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWL7p2O_zZ0dikwm67qIw_T6gI_INUF86Q5mAGSsvLSUIXCQ/viewform?usp=sf_link" target="_blank" class="btn-primary btn mt-4 ">Apply
-          Now
-        </a>
-      </div>
-    </div>
-    <div class="w-full p-4">
-      <div class="p-4 border-2 border-indigo-800 rounded-lg bg-indigo-100 px-4 py-6 md:px-6 rounded shadow">
-        <div class="font-semibold text-md md:text-3xl">
-          Call for Volunteers - VR Developers
-        </div>
-        <div class="text-md md:text-lg">
-          <p class="mt-4">
-            State Disaster Management Authority (SDMA) invites applications for Virtual Reality developers
-            volunteers.<br>
-            <br>
-            About the task:<br>
-            1. Work on a VR application to be used by state officials to monitor the Coronavirus outbreak.<br>
-            2. Work on Unity (Other Gaming Engine) / Blender (Other 3D Modelling tools) to build a VR application
-            (preferably for Oculus Go and Quest device).<br>
-            3. Work with the backend team to ensure you have all the necessary information to work on the
-            application.<br>
-            4. The idea is to have the quick MVP out in a couple of days and take it from there.<br>
-            <br>
-            About you:<br>
-            1. Have the courage and genuine curiosity to work on Virtual Reality and be part of select like-minded
-            individuals.<br>
-            2. Want to play a role by helping with what you can do in this worldwide pandemic of Coronavirus
-            outbreak.<br>
-            3. Want to work on a real life-real time Virtual Reality project.<br>
-            4. Have previously worked on VR project(s) and are a proficient VR developer.<br>
-            5. You should understand using Rest APIs.<br>
-          </p>
-        </div>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScO6D9ZkQI5awtkFfatiHJcXVyhUFZGgTaKj_ynP-duGNIEYw/viewform?usp=sf_link" target="_blank" class="btn-primary btn mt-4 ">Apply
-          Now
-        </a>
-      </div>
-    </div>
-    <div>
-      <div class="w-full p-4">
-        <div class="p-4 border-2 border-purple-800 rounded-lg bg-purple-200 px-4 py-6 md:px-6 rounded shadow">
-          <a id="bodhi" class="font-semibold text-md md:text-3xl">
-            Elderly Aid or Help
-          </a>
-          <div class="text-md md:text-lg">
-            <p class="mt-4">
-              There is a lot of elderly population in Kerala who live alone and would need help in procuring essential
-              goods and medicines for their daily use during this time of epidemic as they are comparatively more prone
-              to the virus attack when exposed. Please apply below if you are interested to volunteer to take up their
-              order from a call centre, one each in a city and deliver them what they need.
-            </p>
-          </div>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfaHZDzx6GhIr9kAne8cmsc6OWpx9mL5HDTeqayboqJ0g_StA/viewform?usp=sf_link" target="_blank" class="btn-primary btn mt-4 ">Apply
-            Now
-          </a>
-        </div>
-      </div>
-      <div class="w-full p-4">
-        <div class="p-4 border-2 border-blue-800 rounded-lg bg-blue-200 px-4 py-6 md:px-6 rounded shadow">
-          <a id="bodhi" class="font-semibold text-md md:text-3xl">
-            Volunteer Data Scientist
-          </a>
-          <div class="text-md md:text-lg">
-            <p class="mt-4">
-              State Disaster Management Authority (SDMA) invites application for Data Science volunteers with expertise
-              in below-mentioned areas: <br><br>
-              What you will do:<br>
-              1. Mathematical modelling of the epidemic curve for COVID-19 outbreak<br>
-              2. Data Analysis, Capacity Planning<br>
-              3. Bayesian Statistics<br>
-              4. Previously worked on "what if" analysis<br>
-              5. Clustering and segmentation<br>
-              6. Proficiency in R/Python and Pandas/SQL<br>
-              7. Data Wrangling: Should be able to clean data and parse data from documents<br>
-              <br><br>
-              You will enjoy this position if you<br>
-              1. Have the courage and genuine curiosity to learn new modelling techniques and be part of a select<br>
-              like-minded individuals<br>
-              2. Want to play detective finding clues from data<br>
-              3. Want to work on a reallife-realtime data science project<br>
-              4. Enjoy summarising your findings with actionable insights<br>
-              <br><br>
-              We encourage applications from candidates with diverse backgrounds, experiences, and identities.
-            </p>
-          </div>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeJ-uuiDwLJUCyOAZhqSu9nd-aQdLIcutC4o1RnLQ5b7DNhSw/viewform" target="_blank" class="btn-primary btn mt-4 ">Apply
-            Now
-          </a>
-        </div>
-      </div>
-      <div class="w-full p-4">
-        <div class="p-4 border-2 border-yellow-800 rounded-lg bg-yellow-200 px-4 py-6 md:px-6 rounded shadow">
-          <div class="font-semibold text-md md:text-3xl">
-            Data Sanitisation for State Disaster Management Authority (SDMA)
-          </div>
-          <div class="text-md md:text-lg">
-            <p class="mt-4">
-              Data Sanitisation   for State Disaster Management Authority (SDMA) has extensive
-              data-sets on Patient Data, Hospital Data, Foreign Travel data of people who have visited Kerala and such
-              data sets.  The SDMA urgently requires volunteers who can support in sanitising the data available in
-              Excel files or PDF’s to be stored into a single master database.  This master database can then be given
-              to Data Scientists who can help SDMA in Resource and Capacity Planning.  The skills required for this
-              volunteering job are proficiency in Microsoft Excel. The Volunteer should have a laptop with internet
-              connection. As the information is of sensitive nature, the volunteer has to work out of the SDMA Head
-              Quarters in Trivandrum. (sdma.kerala.gov.in)  Please apply below if you are interested.
-            </p>
-          </div>
-          <a href="https://docs.google.com/forms/d/1nex6rS3sNUA9WqfLZySM8KaKKwgeAl3F_S38BxI9VGM/" target="_blank" class="btn-primary btn mt-4 ">Apply
-            Now
-          </a>
-        </div>
-      </div>
-      <div class="w-full p-4">
-        <div class="p-4 border-2 border-green-800 rounded-lg bg-green-200 px-4 py-6 md:px-6 rounded shadow">
-          <div class="font-semibold text-md md:text-3xl">
-            Call For Medical Volunteers
-          </div>
-          <div class="text-md md:text-lg">
-            <p class="mt-4">
-              The state of kerala has taken effective steps against the COVID- 19 pandemic. The efforts to break the
-              transmission chain of the virus is possible with support of the community . The Department of Health and
-              Family welfare calls out for participation of the health practitioners to join hands with the state in the
-              fight against COVID-19 . You may enroll using the link provided below for offering voluntary service at
-              the Isolation facilities in hospitals/ homes, patient management in wards, screening at airports,
-              seaports, railway stations and bus stations. Interested health practitioners may fill up the details in
-              this form and submit. The Department of health and family welfare, kerala shall contact you soon.
-            </p>
-          </div>
-          <a href="https://forms.gle/3FtcS7ovp1YGG9539" target="_blank" class="btn-primary btn mt-4 ">Apply
-            Now
-          </a>
-        </div>
-      </div>
-      <div class="w-full p-4">
-        <div class="p-4 border-2 border-red-800 rounded-lg bg-red-100 px-4 py-6 md:px-6 rounded shadow">
-          <div class="font-semibold text-md md:text-3xl">
-            Call For Engineering Volunteers
-          </div>
-          <div class="text-md md:text-lg">
-            <p class="mt-4">
-              1. CoronaSafe Network is a an open-source public utility designed by a multi-disciplinary team of
-              volunteers along with the Government of Kerala
-            </p>
-            <p class="mt-4">
-              2. The goal is to create a volunteer run defence network to protect the healthcare system of a state or
-              nation against the corona virus attack.
-            </p>
-            <p class="mt-4">
-              3. There are currently more than 20 applications that are running live which are designed to give the
-              Chief Minister’s office and general public live information about Hospital Bed Capacity Utilisation,
-              Corona Care Canters Capacity Utilisation, Inventory Management, Volunteer Management, Patient Management,
-              Food Management, Ambulance Network and other features.
-            </p>
-            <p class="mt-4">
-              4. We are extremely short on software engineering talent and require immediate and urgent reinforcements
-              from the software engineering community to setup the full network and put in on trial run by March 28th,
-              2020.  
-            </p>
-          </div>
-          <a href="https://docs.google.com/forms/d/1_ZmCzJzR3RdnP8TQ-SBlvn0SY_vhLZ7r8BQo068BU1Q/viewform?edit_requested=true" target="_blank" class="btn-primary btn mt-4 ">Apply
-            Now
-          </a>
-        </div>
-      </div>
-    </div>
-    <!--      <div>-->
-    <%#= bar_chart District.includes(:reports).all.map { |d| {name: d.name, report: d.reports.last.total_hospitalised }
-    } %>
-    <!--      </div>-->
     <div class="p-6">
       <div class="text-2xl md:text-5xl font-semibold px-4 md:px-0">
         Current Status In Kerala

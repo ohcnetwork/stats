@@ -1,6 +1,25 @@
+<%
+def color(id)
+  case id % 5
+    when 4
+      "border-yellow-800 bg-yellow-100"
+    when 3
+      "border-blue-800 bg-blue-100"
+    when 2
+      "border-green-800 bg-green-100"
+    when 1
+      "border-red-800 bg-red-100"
+    when 1
+      "border-orange-800 bg-orange-100"
+    else
+      "border-gray-800 bg-gray-100"
+  end
+end
+%>
+
 <div class="max-w-3xl mx-auto">
   <div class="w-full p-4">
-    <div class="p-4 border-2 border-red-800 rounded-lg bg-red-100 px-4 py-6 md:px-6 rounded shadow">
+    <div class="p-4 border-2 rounded-lg px-4 py-6 md:px-6 rounded shadow <%=color(@news.id) %>">
       <div class="font-semibold text-md md:text-3xl">
         <%= @news.title %>
       </div>
@@ -17,7 +36,7 @@
   </div>
 </div>
 <div class="mx-auto flex justify-center">
-  <div class="text-md px-6 py-2 rounded shadow-sm border border-gray-500 text-gray-600 inline-flex mx-auto">
+  <a href="./" class="text-md px-6 py-2 rounded shadow-sm border border-gray-500 text-gray-600 inline-flex mx-auto">
     View More
-  </div>
+  </a>
 </div>
