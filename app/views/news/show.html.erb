@@ -1,0 +1,23 @@
+<div class="max-w-3xl mx-auto">
+  <div class="w-full p-4">
+    <div class="p-4 border-2 border-red-800 rounded-lg bg-red-100 px-4 py-6 md:px-6 rounded shadow">
+      <div class="font-semibold text-md md:text-3xl">
+        <%= @news.title %>
+      </div>
+      <% if @news.description.present? %>
+      <div class="text-md md:text-lg">
+        <p class="mt-4">
+          <%= @news.description %>
+        </p>
+        <% end %>
+        <a href=<%= @news.link %> target="_blank" class="btn-primary btn mt-4 ">Know More
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mx-auto flex justify-center">
+  <div class="text-md px-6 py-2 rounded shadow-sm border border-gray-500 text-gray-600 inline-flex mx-auto">
+    View More
+  </div>
+</div>

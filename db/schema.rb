@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_174215) do
+ActiveRecord::Schema.define(version: 2020_06_14_143145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 2020_03_24_174215) do
 
   create_table "facility_types", force: :cascade do |t|
     t.string "title"
+  end
+
+  create_table "news", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "link"
+    t.string "slug", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["slug"], name: "index_news_on_slug", unique: true
   end
 
   create_table "reports", force: :cascade do |t|

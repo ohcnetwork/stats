@@ -14,6 +14,24 @@
 %>
 <div class="max-w-3xl mx-auto">
   <div class="mt-4">
+    <% News.all.each do |news| %>
+    <div class="w-full p-4">
+      <div class="p-4 border-2 border-pink-800 rounded-lg bg-pink-100 px-4 py-6 md:px-6 rounded shadow">
+        <div class="font-semibold text-md md:text-3xl">
+          <%= news.title %>
+        </div>
+        <% if news.description.present? %>
+        <div class="text-md md:text-lg">
+          <p class="mt-4">
+            <%= news.description %>
+          </p>
+        </div>
+        <% end%>
+        <a href=<%= news.link %> target="_blank" class="btn-primary btn mt-4 ">Know More
+        </a>
+      </div>
+    </div>
+    <%end%>
     <div class="w-full p-4">
       <div class="p-4 border-2 border-pink-800 rounded-lg bg-pink-100 px-4 py-6 md:px-6 rounded shadow">
         <div class="font-semibold text-md md:text-3xl">
@@ -24,6 +42,7 @@
         </a>
       </div>
     </div>
+
     <div class="w-full p-4">
       <div class="p-4 border-2 border-pink-800 rounded-lg bg-pink-100 px-4 py-6 md:px-6 rounded shadow">
         <div class="font-semibold text-md md:text-3xl">

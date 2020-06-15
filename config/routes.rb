@@ -24,6 +24,5 @@ Rails.application.routes.draw do
   get '/medical', action: 'medical', controller: 'home'
   get '/core', action: 'core', controller: 'home'
 
-  get '/punjab', action: 'index', controller: 'punjab'
-  get '/punjab/engineer', action: 'engineer', controller: 'home'
+  get '/(:slug)', action: 'show', controller: 'news'
 end
