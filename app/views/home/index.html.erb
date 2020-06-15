@@ -23,7 +23,7 @@
         <% if news.description.present? %>
         <div class="text-md md:text-lg">
           <p class="mt-4">
-            <%= news.description %>
+            <%= simple_format(news.description) %>
           </p>
         </div>
         <% end%>

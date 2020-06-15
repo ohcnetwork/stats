@@ -7,7 +7,7 @@
       <% if @news.description.present? %>
       <div class="text-md md:text-lg">
         <p class="mt-4">
-          <%= @news.description %>
+          <%= simple_format(@news.description) %>
         </p>
         <% end %>
         <a href=<%= @news.link %> target="_blank" class="btn-primary btn mt-4 ">Know More

@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_06_14_143145) do
 
   create_table "news", force: :cascade do |t|
     t.string "title"
-    t.string "description"
+    t.text "description"
     t.string "link"
     t.string "slug", null: false
     t.datetime "created_at", precision: 6, null: false
