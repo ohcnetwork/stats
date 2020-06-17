@@ -17,7 +17,7 @@ ActiveAdmin.register News do
   form do |f|
     f.inputs do
       f.input :title
-      f.input :description
+      f.input :description, as: :quill_editor
       f.input :link
       f.input :slug
     end

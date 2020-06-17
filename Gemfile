@@ -24,6 +24,8 @@ gem 'rack-cors'
 
 gem "chartkick"
 
+gem 'activeadmin_quill_editor'
+
 gem 'reform-rails', '~> 0.1'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
