@@ -2,13 +2,14 @@
 
 <!DOCTYPE html>
 <html lang='en' data-flash="<%= presenter.flash_messages %>">
+
 <head>
   <title>Corona Safe Volunteer Network</title>
-  <meta charset="utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="description" content="Corona Safe Volunteer Network"/>
-  <meta property="og:description" content="Corona Safe Volunteer Network"/>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Corona Safe Volunteer Network" />
+  <meta property="og:description" content="Corona Safe Volunteer Network" />
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
@@ -21,42 +22,38 @@
 </head>
 
 <body data-env="<%= Rails.env %>">
-<section class="min-h-full flex flex-col items-stretch">
-  <%#= yield :nav %>
-  <main class="flex-grow bg-gray-100">
-    <div class="bg-white w-full border-b border-gray-200">
-      <div class="max-w-5xl mx-auto">
-        <div class="max-w-screen-sm mx-auto">
-          <div class="flex flex-col md:flex-row justify-between items-center md:items-end py-4 pl-3 pr-4 md:px-0">
-            <a class="w-2/5 md:w-1/3" href="/">
-              <img
-                class="object-contain"
-                src="https://res.cloudinary.com/bodhi/image/upload/v1584022097/apps/coronasafe/Coronasafe-logo_b6fclm.png"
-                title="CoronaSafe: COVID-19 Literacy Mission"
-                alt="CoronaSafe Logo: COVID-19 Literacy Mission"
-                />
-            </a>
-            <p class="font-semibold text-xs md:text-base mt-2 md:mt-0">
-              Corona Literacy Mission & Corona Care Center
-            </p>
+  <section class="min-h-full flex flex-col items-stretch">
+    <%#= yield :nav %>
+    <main class="flex-grow bg-gray-100">
+      <div class="bg-white w-full border-b border-gray-200">
+        <div class="max-w-5xl mx-auto">
+          <div class="max-w-screen-sm mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-end py-4 pl-3 pr-4 md:px-0">
+              <a class="w-2/5 md:w-1/3" href="/">
+                <img class="object-contain" src="https://res.cloudinary.com/bodhi/image/upload/v1584022097/apps/coronasafe/Coronasafe-logo_b6fclm.png" title="CoronaSafe: COVID-19 Literacy Mission" alt="CoronaSafe Logo: COVID-19 Literacy Mission" />
+              </a>
+              <p class="font-semibold text-xs md:text-base mt-2 md:mt-0">
+                Corona Literacy Mission
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="px-2">
-      <%= yield %>
-    </div>
-    <% if current_user.present? %>
+      <div class="px-2">
+        <%= yield %>
+      </div>
+      <% if current_user.present? %>
       <div class="max-w-fc mx-auto my-4">
         <%= button_to destroy_user_session_path, method: :delete, class: "text-xs px-1 py-1 rounded shadow-sm border border-gray-500 text-gray-600" do %>
-          <div class="flex items-center btn">
-            <span>Logout</span>
-          </div>
+        <div class="flex items-center btn">
+          <span>Logout</span>
+        </div>
         <% end %>
-    <% end %>
-    </div>
-  </main>
-  <%#= yield :footer %>
-</section>
+        <% end %>
+      </div>
+    </main>
+    <%#= yield :footer %>
+  </section>
 </body>
+
 </html>
