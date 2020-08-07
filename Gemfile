@@ -22,7 +22,7 @@ gem 'reform', '~> 2.2' # Form objects decoupled from models. http://www.trailbla
 
 gem 'rack-cors'
 
-gem "chartkick"
+gem "chartkick", ">= 3.4.0"
 
 gem 'activeadmin_quill_editor'
 
