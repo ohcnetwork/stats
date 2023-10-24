@@ -24,7 +24,7 @@ gem 'rack-cors'
 
 gem "chartkick"
 
-gem 'activeadmin_quill_editor'
+gem 'activeadmin_quill_editor', '>= 1.1.0'
 
 gem 'reform-rails', '~> 0.1'
 # Use Redis adapter to run Action Cable in production
@@ -41,7 +41,7 @@ gem 'devise', '~> 4.7', '>= 4.7.1' # User auth library.
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'activeadmin', '~> 2.6.0' # The administration framework for Ruby on Rails applications. https://activeadmin.info
+gem 'activeadmin', '~> 3.1.0' # The administration framework for Ruby on Rails applications. https://activeadmin.info
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
